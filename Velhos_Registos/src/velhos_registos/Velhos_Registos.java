@@ -12,10 +12,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -24,40 +24,46 @@ public class Velhos_Registos extends JFrame implements ActionListener{
     public Velhos_Registos(){
         super("Aplicação para armazenar registros do ACORDI");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(370, 270); // tamanho da tela
+        setSize(400, 270); // tamanho da tela
         
-        JLabel login = new JLabel("Login:");
-        JTextField nome = new JTextField();
-        JLabel senha = new JLabel("Senha:");
-        JPasswordField password = new JPasswordField(11);
-        JButton ok = new JButton("Confimar");
-                
-        this.add(login);
-        this.add(senha);
-        this.add(nome);
-        this.add(password);
-        this.add(ok);
+        InserirComponentes();
+    }
+    
+    public void InserirComponentes(){
+        JLabel LabelTitulo = new JLabel("Escolha uma das opções de login abaixo");
+        JRadioButton ButtonAluno = new JRadioButton("Aluno");
+        JRadioButton ButtonProfessor = new JRadioButton("Professor");
+        JRadioButton ButtonCoordenador = new JRadioButton("Coordenador");
+        ButtonGroup GroupLogin = new ButtonGroup();
+        JButton ButtonConfirma = new JButton("Confirmar");
         
-        nome.addActionListener(this);
-        password.addActionListener(this);
-        nome.setActionCommand("eu");
-        password.setActionCommand("senha");
+        this.add(LabelTitulo);
+        this.add(ButtonAluno);
+        this.add(ButtonProfessor);
+        this.add(ButtonCoordenador);
+        this.add(ButtonConfirma);
+        
+        GroupLogin.add(ButtonAluno);
+        GroupLogin.add(ButtonProfessor);
+        GroupLogin.add(ButtonCoordenador);
+        this.add(ButtonConfirma);
         
         this.setLayout(null);
-        login.setLocation(40, 50);
-        login.setSize(75, 30);
         
-        nome.setLocation(100, 50);
-        nome.setSize(180, 30);
+        LabelTitulo.setLocation(40, 10);
+        LabelTitulo.setSize(300, 40);
         
-        senha.setLocation(40, 100);
-        senha.setSize(70, 30);
+        ButtonAluno.setLocation(40, 50);
+        ButtonAluno.setSize(175, 40);
         
-        password.setLocation(100, 100);
-        password.setSize(180, 30);
+        ButtonProfessor.setLocation(40, 80);
+        ButtonProfessor.setSize(175, 40);
         
-        ok.setLocation(130, 160);
-        ok.setSize(100, 40);
+        ButtonCoordenador.setLocation(40, 110);
+        ButtonCoordenador.setSize(175,40);
+        
+        ButtonConfirma.setLocation(130, 170);
+        ButtonConfirma.setSize(130, 40);
         
         setResizable(false);
         setVisible(true);
