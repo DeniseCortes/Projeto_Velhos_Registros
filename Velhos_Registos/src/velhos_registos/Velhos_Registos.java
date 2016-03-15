@@ -23,10 +23,11 @@ public class Velhos_Registos extends JFrame implements ActionListener{
     
     public Velhos_Registos(){
         super("Aplicação para armazenar registros do ACORDI");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 270); // tamanho da tela
         
         InserirComponentes();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 260); // tamanho da tela
+        
     }
     
     public void InserirComponentes(){
