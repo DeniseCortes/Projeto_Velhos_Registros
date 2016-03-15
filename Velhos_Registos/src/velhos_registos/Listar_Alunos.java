@@ -1,5 +1,4 @@
 package velhos_registos;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,32 +17,29 @@ public class Listar_Alunos {
         } catch (SQLException ex) {
             System.out.println("Problema no SQL, Burro !");
         }
-    
-    
     }
     public ArrayList<Aluno> listarAlunos(){
         ArrayList<Aluno> listaAlunos = new ArrayList();
-        
         try {            
-                       
             resultado = comando.executeQuery("select * from aluno");
-            
              while (resultado.next()) {                
-                //Cliente cliente = new Cliente(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4));
-                Aluno aluno = new Aluno();
-                aluno.setCod_aluno(resultado.getInt("Codigo_aluno"));
-                aluno.setNome(resultado.getString("Nome"));
-                aluno.setCpf(resultado.getString("CPF"));
-                aluno.setNum_faltas(resultado.getInt("Num_faltas"));
-                aluno.setAtestas_medico(resultado.getString("Atestado"));
-                aluno.setFixa_medica(resultado.getString("fixa_medica"));                
+                Aluno aluno = new Aluno(
+                    resultado.getInt(1),resultado.getString(2),
+                    resultado.getString(3),resultado.getInt(4),
+                    resultado.getString(5),resultado.getString(6)
+                );
+                listaAlunos.add(aluno);
             }           
             
         } catch (SQLException ex) {
             System.out.println("Problema com SQL");
         }
-        
         return listaAlunos;
+    }
+    public static void main(String[] Args){
+        Listar_Alunos lista = new Listar_Alunos();
+        lista.listarAlunos();
+        System.out.println(lista.toString());
     
     }
 }
