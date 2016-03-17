@@ -2,6 +2,7 @@ package velhos_registos;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
@@ -26,45 +27,48 @@ public class Velhos_Registos extends JFrame implements ActionListener{
         
         InserirComponentes();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 260); // tamanho da tela
+        setSize(400, 265); // tamanho da tela
         
     }
     
     public void InserirComponentes(){
-        JLabel LabelTitulo = new JLabel("Escolha uma das opções de login abaixo");
-        JRadioButton ButtonAluno = new JRadioButton("Aluno");
-        JRadioButton ButtonProfessor = new JRadioButton("Professor");
-        JRadioButton ButtonCoordenador = new JRadioButton("Coordenador");
-        ButtonGroup GroupLogin = new ButtonGroup();
-        JButton ButtonConfirma = new JButton("Confirmar");
+        JLabel LabelTitulo = new JLabel("Bem Vindo!");
+        JLabel LabelSubTitulo = new JLabel("Escolha uma das opções de login abaixo");
+        JButton ButtonAluno = new JButton("Aluno");
+        JButton ButtonProfessor = new JButton("Professor");
+        JButton ButtonCoordenador = new JButton("Coordenador");
         
         this.add(LabelTitulo);
+        this.add(LabelSubTitulo);
         this.add(ButtonAluno);
         this.add(ButtonProfessor);
         this.add(ButtonCoordenador);
-        this.add(ButtonConfirma);
-        
-        GroupLogin.add(ButtonAluno);
-        GroupLogin.add(ButtonProfessor);
-        GroupLogin.add(ButtonCoordenador);
-        this.add(ButtonConfirma);
         
         this.setLayout(null);
         
-        LabelTitulo.setLocation(40, 10);
+        LabelTitulo.setLocation(140, 10);
         LabelTitulo.setSize(300, 40);
         
-        ButtonAluno.setLocation(40, 50);
-        ButtonAluno.setSize(175, 40);
+        LabelSubTitulo.setLocation(40, 40);
+        LabelSubTitulo.setSize(330, 40);
         
-        ButtonProfessor.setLocation(40, 80);
-        ButtonProfessor.setSize(175, 40);
+        ButtonAluno.setLocation(110, 90);
+        ButtonAluno.setSize(160, 30);
         
-        ButtonCoordenador.setLocation(40, 110);
-        ButtonCoordenador.setSize(175,40);
+        ButtonProfessor.setLocation(110, 130);
+        ButtonProfessor.setSize(160, 30);
         
-        ButtonConfirma.setLocation(130, 170);
-        ButtonConfirma.setSize(130, 40);
+        ButtonCoordenador.setLocation(110, 170);
+        ButtonCoordenador.setSize(160, 30);
+        
+        LabelTitulo.setFont(new Font("Umpush", Font.ROMAN_BASELINE, 20));
+        LabelSubTitulo.setFont(new Font("Ubuntu", Font.ROMAN_BASELINE, 14));
+        ButtonAluno.setFont(new Font("Ubuntu", Font.ROMAN_BASELINE, 14));
+        ButtonProfessor.setFont(new Font("Ubuntu", Font.ROMAN_BASELINE, 14));
+        ButtonCoordenador.setFont(new Font("Ubuntu", Font.ROMAN_BASELINE, 14));
+        
+        ButtonAluno.setToolTipText("Você é aluno? então clique aqui.");
+        ButtonProfessor.setToolTipText("Clique aqui se você é professor.");
         
         setResizable(false);
         setVisible(true);
