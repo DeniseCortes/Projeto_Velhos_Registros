@@ -1,5 +1,6 @@
 package velhos_registos;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,10 +19,14 @@ public class Listar_Alunos {
             System.out.println("Problema no SQL, Burro !");
         }
     }
-    public ArrayList<Aluno> listarAlunos(){
+    public ArrayList<Aluno> listarAlunos(String consulta){
         ArrayList<Aluno> listaAlunos = new ArrayList();
+        System.out.println(consulta);
         try {            
-            resultado = comando.executeQuery("select * from aluno");
+            PreparedStatement m = con.prepareStatement("select * from aluno where cod_aluno like ?");
+            m.setString(1, consulta);
+            resultado = m.executeQuery();
+            System.out.println(m.toString());
              while (resultado.next()) {                
                 Aluno aluno = new Aluno(
                     resultado.getInt(1),resultado.getString(2),
@@ -35,11 +40,5 @@ public class Listar_Alunos {
             System.out.println("Problema com SQL");
         }
         return listaAlunos;
-    }
-    public static void main(String[] Args){
-        Listar_Alunos lista = new Listar_Alunos();
-        lista.listarAlunos();
-        System.out.println(lista.toString());
-    
     }
 }
