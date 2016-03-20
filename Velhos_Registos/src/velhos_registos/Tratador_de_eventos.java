@@ -15,6 +15,12 @@ public class Tratador_de_eventos implements ActionListener{
         if(e.getActionCommand().equals("Professor")){
             Projeto_Login prof = new Projeto_Login();
             prof.setVisible(true);
+            
+        }
+        
+        if(e.getActionCommand().equals("Coordenador")){
+            Projeto_Login coordenador = new Projeto_Login();
+            coordenador.setVisible(true);
         }
     }
     
