@@ -1,6 +1,7 @@
 package velhos_registos;
 
 import java.awt.BorderLayout;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -38,6 +39,8 @@ public class Velhos_Registos extends JFrame implements ActionListener{
         JButton ButtonProfessor = new JButton("Professor");
         JButton ButtonCoordenador = new JButton("Coordenador");
         
+        Tratador_de_eventos evento = new Tratador_de_eventos();
+        
         this.add(LabelTitulo);
         this.add(LabelSubTitulo);
         this.add(ButtonAluno);
@@ -61,11 +64,23 @@ public class Velhos_Registos extends JFrame implements ActionListener{
         ButtonCoordenador.setLocation(110, 170);
         ButtonCoordenador.setSize(160, 30);
         
-        LabelTitulo.setFont(new Font("Umpush", Font.ROMAN_BASELINE, 20));
-        LabelSubTitulo.setFont(new Font("Ubuntu", Font.ROMAN_BASELINE, 14));
-        ButtonAluno.setFont(new Font("Ubuntu", Font.ROMAN_BASELINE, 14));
-        ButtonProfessor.setFont(new Font("Ubuntu", Font.ROMAN_BASELINE, 14));
-        ButtonCoordenador.setFont(new Font("Ubuntu", Font.ROMAN_BASELINE, 14));
+        LabelTitulo.setFont(new Font("SansSerif", Font.ROMAN_BASELINE, 20));
+        LabelSubTitulo.setFont(new Font("Sawasdee", Font.ROMAN_BASELINE, 14));
+        
+        ButtonAluno.setFont(new Font("Sawasdee", Font.ROMAN_BASELINE, 14));
+        ButtonAluno.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        ButtonAluno.setActionCommand("Aluno");
+        ButtonAluno.addActionListener(evento);
+        
+        ButtonProfessor.setFont(new Font("Sawasdee", Font.ROMAN_BASELINE, 14));
+        ButtonProfessor.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        ButtonProfessor.setActionCommand("Professor");
+        ButtonProfessor.addActionListener(evento);
+        
+        ButtonCoordenador.setFont(new Font("Sawasdee", Font.ROMAN_BASELINE, 14));
+        ButtonCoordenador.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        ButtonCoordenador.setActionCommand("Coordenador");
+        ButtonCoordenador.addActionListener(evento);
         
         ButtonAluno.setToolTipText("Você é aluno? então clique aqui.");
         ButtonProfessor.setToolTipText("Clique aqui se você é professor.");
