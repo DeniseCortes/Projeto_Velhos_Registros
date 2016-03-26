@@ -44,14 +44,23 @@ public class Cadastro_interface extends javax.swing.JFrame {
         Fixa_Med_Label = new javax.swing.JLabel();
         Fixa_Med_Aluno_JTexField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        Btn_Cadastar_Ok = new javax.swing.JButton();
+        Btn_Cadastar = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastrar aluno");
 
+        Cod_aluno_Label.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Cod_aluno_Label.setText("Login:");
 
+        Cod_Aluno_JTexField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cod_Aluno_JTexFieldActionPerformed(evt);
+            }
+        });
+
+        Senha_Aluno_Label.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Senha_Aluno_Label.setText("Senha:");
 
         Senha_Aluno_JTexField.addActionListener(new java.awt.event.ActionListener() {
@@ -60,18 +69,25 @@ public class Cadastro_interface extends javax.swing.JFrame {
             }
         });
 
+        Nome_Aluno_Label.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Nome_Aluno_Label.setText("Nome:");
 
+        Atestado_Aluno_Label.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Atestado_Aluno_Label.setText("Atestado:");
 
+        Fixa_Med_Label.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Fixa_Med_Label.setText("Fixa Médica:");
 
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel6.setText("Bem vindo novo aluno");
 
-        Btn_Cadastar_Ok.setText("Cadastrar !");
-        Btn_Cadastar_Ok.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Cadastar.setBackground(new java.awt.Color(221, 226, 242));
+        Btn_Cadastar.setFont(new java.awt.Font("Umpush", 1, 16)); // NOI18N
+        Btn_Cadastar.setText("Cadastrar");
+        Btn_Cadastar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_Cadastar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_Cadastar_OkActionPerformed(evt);
+                Btn_CadastarActionPerformed(evt);
             }
         });
 
@@ -97,11 +113,14 @@ public class Cadastro_interface extends javax.swing.JFrame {
                             .addComponent(Nome_Aluno_JTexField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Atestado_Aluno_JTexField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(Btn_Cadastar_Ok)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(jLabel6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(107, 107, 107)
+                                .addComponent(Btn_Cadastar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
@@ -129,9 +148,9 @@ public class Cadastro_interface extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Fixa_Med_Label)
                     .addComponent(Fixa_Med_Aluno_JTexField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Btn_Cadastar_Ok)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(Btn_Cadastar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -141,11 +160,11 @@ public class Cadastro_interface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Senha_Aluno_JTexFieldActionPerformed
 
-    private void Btn_Cadastar_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Cadastar_OkActionPerformed
+    private void Btn_CadastarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CadastarActionPerformed
         // TODO add your handling code here:
-        String cod_aluno = Cod_Aluno_JTexField.getText().toString();
+        String cod_aluno = Cod_Aluno_JTexField.getText();
         System.out.println(cod_aluno);
-        String senha = Senha_Aluno_JTexField.getText().toString();
+        String senha = Senha_Aluno_JTexField.getText();
         String nome = Nome_Aluno_JTexField.getText();
         int num_faltas = 0;
         String atestado = Atestado_Aluno_JTexField.getText();
@@ -165,7 +184,11 @@ public class Cadastro_interface extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, "o Cadastro deu errado!!");
         }
-    }//GEN-LAST:event_Btn_Cadastar_OkActionPerformed
+    }//GEN-LAST:event_Btn_CadastarActionPerformed
+
+    private void Cod_Aluno_JTexFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cod_Aluno_JTexFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Cod_Aluno_JTexFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,7 +228,7 @@ public class Cadastro_interface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Atestado_Aluno_JTexField;
     private javax.swing.JLabel Atestado_Aluno_Label;
-    private javax.swing.JButton Btn_Cadastar_Ok;
+    private javax.swing.JButton Btn_Cadastar;
     private javax.swing.JTextField Cod_Aluno_JTexField;
     private javax.swing.JLabel Cod_aluno_Label;
     private javax.swing.JTextField Fixa_Med_Aluno_JTexField;
