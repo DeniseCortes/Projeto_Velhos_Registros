@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package velhos_registos;
+package Objetos_Entidades;
 
 /**
  *
@@ -13,10 +13,10 @@ public class Turma {
     private int cod_turma;
     private int quant_alunos;
     private int horario;
-    private Aluno aluno;
-    private Professor prof;
+    private int aluno;
+    private int prof;
 
-    public Turma(int cod_turma, int quant_alunos, int horario, Aluno aluno, Professor prof) {
+    public Turma(int cod_turma, int quant_alunos, int horario, int aluno, int prof) {
         this.cod_turma = cod_turma;
         this.quant_alunos = quant_alunos;
         this.horario = horario;
@@ -48,19 +48,19 @@ public class Turma {
         this.horario = horario;
     }
 
-    public Aluno getAluno() {
+    public int getAluno() {
         return aluno;
     }
 
-    public void setAluno(Aluno aluno) {
+    public void setAluno(int aluno) {
         this.aluno = aluno;
     }
 
-    public Professor getProf() {
+    public int getProf() {
         return prof;
     }
 
-    public void setProf(Professor prof) {
+    public void setProf(int prof) {
         this.prof = prof;
     }
     

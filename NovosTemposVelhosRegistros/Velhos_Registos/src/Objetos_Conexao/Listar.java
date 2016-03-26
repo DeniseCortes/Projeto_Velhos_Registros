@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package velhos_registos;
+package Objetos_Conexao;
 
+import Objetos_Entidades.Aluno;
+import Objetos_Entidades.Professor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,4 +1,4 @@
-package velhos_registos;
+package Objetos_Entidades;
 
 public class Aluno {
     private int cod_aluno;
