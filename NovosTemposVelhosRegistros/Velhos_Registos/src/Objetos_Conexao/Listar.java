@@ -5,8 +5,9 @@
  */
 package Objetos_Conexao;
 
-import Objetos_Entidades.Aluno;
 import Objetos_Entidades.Professor;
+import Objetos_Entidades.Aluno;
+import Objetos_Entidades.Coordenador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,74 +20,67 @@ import java.util.ArrayList;
  * @author rodolfo
  */
 public class Listar {
+
     Connection con;
-    Statement comando;
     ResultSet resultado;
-    
-    public Listar(){
+
+    public Listar() {
         con = new Conexao().Conectando();
-        try {
-            comando = con.createStatement();
-        } catch (SQLException ex) {
-            System.out.println("Problema na conexão!");
-        }
     }
-    public ArrayList<Aluno> listarAlunos(String login) throws SQLException{
+
+    public ArrayList<Aluno> listarAlunos() throws SQLException {
         ArrayList<Aluno> listaAlunos = new ArrayList();
-        try {            
-            PreparedStatement comand_prepar = con.prepareStatement("SELECT * FROM aluno WHERE cod_aluno LIKE ? ;");
-            comand_prepar.setString(1, login);
-            
-            resultado = comand_prepar.executeQuery();
-            
-             while (resultado.next()) {                
-                Aluno aluno = new Aluno(
-                    resultado.getInt(1),resultado.getInt(2),
-                    resultado.getString(3),resultado.getInt(4),
-                    resultado.getString(5),resultado.getString(6)
-                );
-                listaAlunos.add(aluno);
-                for (int i = 0; i < listaAlunos.size(); i++) {
-                    System.out.println(listaAlunos.get(i).getNome()+listaAlunos.get(i).getAtestas_medico());
-                }
-            }                      
-        }
-        catch (SQLException ex) {
-            System.out.println("Problema com o listar_alunos");
-        }
-        finally{
-            con.close();
+        PreparedStatement comand_prepar = con.prepareStatement("SELECT * FROM aluno;");
+        resultado = comand_prepar.executeQuery();
+        while (resultado.next()) {
+            Aluno aluno = new Aluno(
+                    resultado.getInt(1), resultado.getInt(2),
+                    resultado.getString(3), resultado.getInt(4),
+                    resultado.getString(5), resultado.getString(6)
+            );
+            listaAlunos.add(aluno);
+            for (int i = 0; i < listaAlunos.size(); i++) {
+                System.out.println(" " + listaAlunos.get(i));
+            }
         }
         return listaAlunos;
     }
-    public ArrayList<Professor> listarProf(String consulta) throws SQLException{
+
+    public ArrayList<Professor> listarProf() throws SQLException {
         ArrayList<Professor> listaProf = new ArrayList();
-        try {            
-            PreparedStatement comand_prepar = con.prepareStatement("select * from professor where cod_prof like ?");
-            comand_prepar.setString(1, consulta);
-            resultado = comand_prepar.executeQuery();
-            
-             while (resultado.next()) {                
-                Professor prof = new Professor(
-                    resultado.getInt(1),resultado.getInt(2),
-                    resultado.getString(3),resultado.getString(4),
+        PreparedStatement comand_prepar = con.prepareStatement("SELECT * FROM professor;");
+        resultado = comand_prepar.executeQuery();
+
+        while (resultado.next()) {
+            Professor prof = new Professor(
+                    resultado.getInt(1), resultado.getInt(2),
+                    resultado.getString(3), resultado.getString(4),
                     resultado.getInt(5)
-                );
-                listaProf.add(prof);
-                for (int i = 0; i < listaProf.size(); i++) {
-                    System.out.println(listaProf.get(i));
-                }
-            }                      
-        }
-        catch (SQLException ex) {
-            System.out.println("Problema com o listar_alunos");
-        }
-        finally{
-            con.close();
+            );
+            listaProf.add(prof);
+            for (int i = 0; i < listaProf.size(); i++) {
+                System.out.print(" " + listaProf.get(i));
+            }
         }
         return listaProf;
     }
-    
-    
-    
+
+    public ArrayList<Coordenador> listaCoord() throws SQLException {
+        ArrayList<Coordenador> lista = new ArrayList();
+
+        PreparedStatement comand_prepar = con.prepareStatement("SELECT * FROM coordenador;");
+        resultado = comand_prepar.executeQuery();
+
+        while (resultado.next()) {
+            Coordenador coord = new Coordenador(
+                    resultado.getString(1),
+                    resultado.getInt(2),
+                    resultado.getInt(3),
+                    resultado.getInt(4)
+            );
+            lista.add(coord);
+        }
+
+        return lista;
+    }
 }
