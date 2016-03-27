@@ -133,17 +133,17 @@ public class TelaEscolhaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_alunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_alunoActionPerformed
-        Projeto_Login aluno = new Projeto_Login();
+        Login_Aluno aluno = new Login_Aluno();
         aluno.setVisible(true);
     }//GEN-LAST:event_Btn_alunoActionPerformed
 
     private void Btn_professorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_professorActionPerformed
-        Projeto_Login prof = new Projeto_Login();
+        Login_professor prof = new Login_professor();
         prof.setVisible(true);
     }//GEN-LAST:event_Btn_professorActionPerformed
 
     private void Btn_coordenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_coordenadorActionPerformed
-        Projeto_Login coordenador = new Projeto_Login();
+        Login_coordenador coordenador = new Login_coordenador();
         coordenador.setVisible(true);
     }//GEN-LAST:event_Btn_coordenadorActionPerformed
 
