@@ -5,6 +5,8 @@
  */
 package Interfaces;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author denise
@@ -44,7 +46,7 @@ public class TelaEscolhaLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(236, 236, 236));
 
         Lbl_subtitulo.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
-        Lbl_subtitulo.setText("Escolha uma das opções de login abaixo");
+        Lbl_subtitulo.setText("Escolha uma das opções de login abaixo:");
 
         Btn_aluno.setBackground(new java.awt.Color(221, 226, 242));
         Btn_aluno.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
@@ -133,16 +135,19 @@ public class TelaEscolhaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_alunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_alunoActionPerformed
-        Login_Aluno aluno = new Login_Aluno();
+        Login_aluno aluno = new Login_aluno();
         aluno.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_Btn_alunoActionPerformed
 
     private void Btn_professorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_professorActionPerformed
+        this.dispose();
         Login_professor prof = new Login_professor();
         prof.setVisible(true);
     }//GEN-LAST:event_Btn_professorActionPerformed
 
     private void Btn_coordenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_coordenadorActionPerformed
+        this.dispose();
         Login_coordenador coordenador = new Login_coordenador();
         coordenador.setVisible(true);
     }//GEN-LAST:event_Btn_coordenadorActionPerformed
