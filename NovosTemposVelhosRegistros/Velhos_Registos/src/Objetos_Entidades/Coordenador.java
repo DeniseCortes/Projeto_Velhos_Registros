@@ -11,15 +11,16 @@ package Objetos_Entidades;
  */
 public class Coordenador {
     private String nome;
+    private int senha_coord;
     private int cod_coordenador;
     private int cod_turma;
-    private int senha_coord;
+    
 
-    public Coordenador(String nome, int cod_coordenador, int cod_turma, int senha_coord) {
+    public Coordenador(String nome,  int senha_coord,int cod_coordenador, int cod_turma) {
         this.nome = nome;
+        this.senha_coord = senha_coord;
         this.cod_coordenador = cod_coordenador;
         this.cod_turma = cod_turma;
-        this.senha_coord = senha_coord;
     }
 
     public String getNome() {

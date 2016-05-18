@@ -47,7 +47,7 @@ public class pg_inicial_aluno extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(236, 236, 236));
 
-        Btn_atualiza.setBackground(new java.awt.Color(236, 236, 236));
+        Btn_atualiza.setBackground(new java.awt.Color(221, 226, 242));
         Btn_atualiza.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Btn_atualiza.setText("Atualizar dados");
         Btn_atualiza.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -58,7 +58,7 @@ public class pg_inicial_aluno extends javax.swing.JFrame {
             }
         });
 
-        Btn_sair.setBackground(new java.awt.Color(236, 236, 236));
+        Btn_sair.setBackground(new java.awt.Color(221, 226, 242));
         Btn_sair.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Btn_sair.setText("Sair");
         Btn_sair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -185,7 +185,7 @@ public class pg_inicial_aluno extends javax.swing.JFrame {
     private void Btn_atualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_atualizaActionPerformed
         Atualizar_aluno atualiza = new Atualizar_aluno();
         atualiza.setVisible(true);
-        this.setVisible(false);
+       // this.setVisible(false);
     }//GEN-LAST:event_Btn_atualizaActionPerformed
 
     private void Btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_sairActionPerformed
@@ -201,9 +201,12 @@ public class pg_inicial_aluno extends javax.swing.JFrame {
         Lbl_valor_atestado.setText(atestado);
         Lbl_valor_ficha.setText(ficha);
     }
-    /**
-     * @param args the command line arguments
-     */
+    
+    public int enviarLogin(int cod){
+        String codigo = Lbl_valor_cod.getText();
+        cod = Integer.parseInt(codigo);
+        return cod;
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

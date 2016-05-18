@@ -131,7 +131,7 @@
         <Component class="javax.swing.JButton" name="Btn_atualiza">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ec" green="ec" red="ec" type="rgb"/>
+              <Color blue="f2" green="e2" red="dd" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Sawasdee" size="15" style="0"/>
@@ -151,7 +151,7 @@
         <Component class="javax.swing.JButton" name="Btn_sair">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ec" green="ec" red="ec" type="rgb"/>
+              <Color blue="f2" green="e2" red="dd" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Sawasdee" size="15" style="0"/>

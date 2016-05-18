@@ -5,6 +5,12 @@
  */
 package Interfaces;
 
+import Objetos_Conexao.Cadastro;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author denise
@@ -39,8 +45,10 @@ public class Cadastro_coordenador extends javax.swing.JFrame {
         Lbl_senha = new javax.swing.JLabel();
         Btn_cancel = new javax.swing.JButton();
         Btn_confirmar = new javax.swing.JButton();
+        Btn_voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastrar coordenador");
 
         Lbl_titulo.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         Lbl_titulo.setText("Cadastrar Coordenador");
@@ -48,33 +56,39 @@ public class Cadastro_coordenador extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(236, 236, 236));
 
         Text_nome.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        Text_nome.setPreferredSize(new java.awt.Dimension(100, 27));
+        Text_nome.setPreferredSize(new java.awt.Dimension(170, 27));
 
         Text_id.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        Text_id.setPreferredSize(new java.awt.Dimension(100, 27));
+        Text_id.setPreferredSize(new java.awt.Dimension(170, 27));
 
         Text_turma.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         Text_turma.setPreferredSize(new java.awt.Dimension(170, 27));
 
         Text_senha.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        Text_senha.setPreferredSize(new java.awt.Dimension(100, 27));
+        Text_senha.setPreferredSize(new java.awt.Dimension(170, 27));
         Text_senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Text_senhaActionPerformed(evt);
             }
         });
 
+        Lbl_nome.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Lbl_nome.setText("Nome:");
 
+        Lbl_id.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Lbl_id.setText("Identificação:");
 
+        Lbl_turma.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Lbl_turma.setText("Turma:");
 
+        Lbl_senha.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Lbl_senha.setText("Senha:");
 
         Btn_cancel.setBackground(new java.awt.Color(221, 226, 242));
         Btn_cancel.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
-        Btn_cancel.setText("Cancelar");
+        Btn_cancel.setText("Limpar");
+        Btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_cancel.setPreferredSize(new java.awt.Dimension(73, 35));
         Btn_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_cancelActionPerformed(evt);
@@ -84,37 +98,59 @@ public class Cadastro_coordenador extends javax.swing.JFrame {
         Btn_confirmar.setBackground(new java.awt.Color(221, 226, 242));
         Btn_confirmar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Btn_confirmar.setText("Confirmar");
+        Btn_confirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_confirmar.setPreferredSize(new java.awt.Dimension(73, 35));
+        Btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_confirmarActionPerformed(evt);
+            }
+        });
+
+        Btn_voltar.setBackground(new java.awt.Color(221, 226, 242));
+        Btn_voltar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Btn_voltar.setText("Voltar");
+        Btn_voltar.setMaximumSize(new java.awt.Dimension(73, 37));
+        Btn_voltar.setMinimumSize(new java.awt.Dimension(73, 37));
+        Btn_voltar.setPreferredSize(new java.awt.Dimension(50, 35));
+        Btn_voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_voltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(65, Short.MAX_VALUE)
+                .addComponent(Btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(Btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Lbl_nome)
                     .addComponent(Lbl_id)
                     .addComponent(Lbl_turma)
                     .addComponent(Lbl_senha))
                 .addGap(8, 8, 8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Text_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Text_senha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Text_turma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(Text_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(73, 73, 73))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Text_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Text_senha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Text_nome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Text_turma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 66, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(Btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(Btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(143, 143, 143)
+                .addComponent(Btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Text_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Lbl_nome))
@@ -130,11 +166,13 @@ public class Cadastro_coordenador extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Text_turma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Lbl_turma))
-                .addGap(31, 31, 31)
+                .addGap(30, 30, 30)
+                .addComponent(Btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btn_cancel)
-                    .addComponent(Btn_confirmar))
-                .addContainerGap(45, Short.MAX_VALUE))
+                    .addComponent(Btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -154,7 +192,7 @@ public class Cadastro_coordenador extends javax.swing.JFrame {
                 .addComponent(Lbl_titulo)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -165,10 +203,42 @@ public class Cadastro_coordenador extends javax.swing.JFrame {
     }//GEN-LAST:event_Text_senhaActionPerformed
 
     private void Btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_cancelActionPerformed
+        Text_id.setText(null);
+        Text_nome.setText(null);
+        Text_senha.setText(null);
+        Text_turma.setText(null);
+    }//GEN-LAST:event_Btn_cancelActionPerformed
+
+    private void Btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_voltarActionPerformed
         Login_coordenador cancel = new Login_coordenador();
         cancel.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_Btn_cancelActionPerformed
+    }//GEN-LAST:event_Btn_voltarActionPerformed
+
+    private void Btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_confirmarActionPerformed
+        String nome = Text_nome.getText();
+        String senha = Text_senha.getText();
+        String cod = Text_id.getText();
+        String turma = Text_turma.getText();
+        
+        Cadastro cadastrarCoordenador = new Cadastro();
+        try {
+            cadastrarCoordenador.Cadastrar_Coordenador(
+                    nome,
+                    Integer.parseInt(senha),
+                    Integer.parseInt(cod),
+                    Integer.parseInt(turma)
+                    
+            );
+            JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso", "deu certo", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao cadastar coordenador", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Verifique se todos os campos de texto "
+                    + "estão preenchidos.", "Erro ao fazer login", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_Btn_confirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,6 +278,7 @@ public class Cadastro_coordenador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_cancel;
     private javax.swing.JButton Btn_confirmar;
+    private javax.swing.JButton Btn_voltar;
     private javax.swing.JLabel Lbl_id;
     private javax.swing.JLabel Lbl_nome;
     private javax.swing.JLabel Lbl_senha;

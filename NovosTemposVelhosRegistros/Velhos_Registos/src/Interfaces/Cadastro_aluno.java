@@ -5,20 +5,20 @@
  */
 package Interfaces;
 
+import Objetos_Conexao.Cadastro;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import Objetos_Conexao.Cadastro;
 
 /**
  *
- * @author rodolfo
+ * @author denise
  */
-public class Cadastro_interface extends javax.swing.JFrame {
+public class Cadastro_aluno extends javax.swing.JFrame {
 
     /**
-     * Creates new form Cadastro_interface
+     * Creates new form Cadastro_aluno
      */
-    public Cadastro_interface() {
+    public Cadastro_aluno() {
         initComponents();
     }
 
@@ -31,143 +31,198 @@ public class Cadastro_interface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        Cod_aluno_Label = new javax.swing.JLabel();
-        Cod_Aluno_JTexField = new javax.swing.JTextField();
-        Senha_Aluno_Label = new javax.swing.JLabel();
-        Senha_Aluno_JTexField = new javax.swing.JTextField();
-        Nome_Aluno_Label = new javax.swing.JLabel();
-        Nome_Aluno_JTexField = new javax.swing.JTextField();
-        Atestado_Aluno_Label = new javax.swing.JLabel();
-        Atestado_Aluno_JTexField = new javax.swing.JTextField();
-        Fixa_Med_Label = new javax.swing.JLabel();
-        Fixa_Med_Aluno_JTexField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        Btn_Cadastar = new javax.swing.JButton();
-
-        jButton1.setText("jButton1");
+        Lbl_titulo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        Lbl_cod = new javax.swing.JLabel();
+        Lbl_senha = new javax.swing.JLabel();
+        Lbl_nome = new javax.swing.JLabel();
+        Lbl_atestado = new javax.swing.JLabel();
+        Lbl_ficha = new javax.swing.JLabel();
+        Text_cod = new javax.swing.JTextField();
+        Text_senha = new javax.swing.JTextField();
+        Text_nome = new javax.swing.JTextField();
+        Text_atestado = new javax.swing.JTextField();
+        Text_ficha = new javax.swing.JTextField();
+        Btn_voltar = new javax.swing.JButton();
+        Btn_limpar = new javax.swing.JButton();
+        Btn_ok = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastrar aluno");
 
-        Cod_aluno_Label.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
-        Cod_aluno_Label.setText("Login:");
+        Lbl_titulo.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        Lbl_titulo.setText("Cadastrar aluno");
 
-        Cod_Aluno_JTexField.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setBackground(new java.awt.Color(236, 236, 236));
+
+        Lbl_cod.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Lbl_cod.setText("Código de aluno:");
+
+        Lbl_senha.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Lbl_senha.setText("Senha:");
+
+        Lbl_nome.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Lbl_nome.setText("Nome:");
+
+        Lbl_atestado.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Lbl_atestado.setText("Atestado médico:");
+
+        Lbl_ficha.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Lbl_ficha.setText("Ficha médica:");
+
+        Text_cod.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        Text_senha.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        Text_senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cod_Aluno_JTexFieldActionPerformed(evt);
+                Text_senhaActionPerformed(evt);
             }
         });
 
-        Senha_Aluno_Label.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
-        Senha_Aluno_Label.setText("Senha:");
+        Text_nome.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        Senha_Aluno_JTexField.addActionListener(new java.awt.event.ActionListener() {
+        Text_atestado.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        Text_ficha.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        Btn_voltar.setBackground(new java.awt.Color(221, 226, 242));
+        Btn_voltar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Btn_voltar.setText("Voltar");
+        Btn_voltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_voltar.setPreferredSize(new java.awt.Dimension(100, 35));
+        Btn_voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Senha_Aluno_JTexFieldActionPerformed(evt);
+                Btn_voltarActionPerformed(evt);
             }
         });
 
-        Nome_Aluno_Label.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
-        Nome_Aluno_Label.setText("Nome:");
-
-        Atestado_Aluno_Label.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
-        Atestado_Aluno_Label.setText("Atestado:");
-
-        Fixa_Med_Label.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
-        Fixa_Med_Label.setText("Fixa Médica:");
-
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel6.setText("Bem vindo novo aluno");
-
-        Btn_Cadastar.setBackground(new java.awt.Color(221, 226, 242));
-        Btn_Cadastar.setFont(new java.awt.Font("Umpush", 1, 16)); // NOI18N
-        Btn_Cadastar.setText("Cadastrar");
-        Btn_Cadastar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Btn_Cadastar.addActionListener(new java.awt.event.ActionListener() {
+        Btn_limpar.setBackground(new java.awt.Color(221, 226, 242));
+        Btn_limpar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Btn_limpar.setText("Limpar");
+        Btn_limpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_limpar.setPreferredSize(new java.awt.Dimension(100, 35));
+        Btn_limpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_CadastarActionPerformed(evt);
+                Btn_limparActionPerformed(evt);
             }
         });
+
+        Btn_ok.setBackground(new java.awt.Color(221, 226, 242));
+        Btn_ok.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Btn_ok.setText("Confirmar");
+        Btn_ok.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_ok.setPreferredSize(new java.awt.Dimension(100, 35));
+        Btn_ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_okActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Lbl_cod)
+                            .addComponent(Lbl_senha)
+                            .addComponent(Lbl_nome))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Text_nome, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(Text_senha)
+                            .addComponent(Text_cod)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Lbl_atestado)
+                            .addComponent(Lbl_ficha))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Text_ficha, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(Text_atestado))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(65, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(Btn_limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Btn_ok, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(144, 144, 144))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lbl_cod)
+                    .addComponent(Text_cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lbl_nome)
+                    .addComponent(Text_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lbl_senha)
+                    .addComponent(Text_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lbl_atestado)
+                    .addComponent(Text_atestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lbl_ficha)
+                    .addComponent(Text_ficha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(Btn_ok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Btn_limpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Fixa_Med_Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Atestado_Aluno_Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Nome_Aluno_Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Senha_Aluno_Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Cod_aluno_Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Fixa_Med_Aluno_JTexField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Senha_Aluno_JTexField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Cod_Aluno_JTexField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Nome_Aluno_JTexField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Atestado_Aluno_JTexField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addComponent(jLabel6))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(107, 107, 107)
-                                .addComponent(Btn_Cadastar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(42, 42, 42))
+                .addGap(131, 131, 131)
+                .addComponent(Lbl_titulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cod_aluno_Label)
-                    .addComponent(Cod_Aluno_JTexField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Senha_Aluno_Label)
-                    .addComponent(Senha_Aluno_JTexField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Nome_Aluno_Label)
-                    .addComponent(Nome_Aluno_JTexField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Atestado_Aluno_Label)
-                    .addComponent(Atestado_Aluno_JTexField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Fixa_Med_Label)
-                    .addComponent(Fixa_Med_Aluno_JTexField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addComponent(Btn_Cadastar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addComponent(Lbl_titulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Senha_Aluno_JTexFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Senha_Aluno_JTexFieldActionPerformed
+    private void Text_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text_senhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Senha_Aluno_JTexFieldActionPerformed
+    }//GEN-LAST:event_Text_senhaActionPerformed
 
-    private void Btn_CadastarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CadastarActionPerformed
-        // TODO add your handling code here:
-        String cod_aluno = Cod_Aluno_JTexField.getText();
+    private void Btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_okActionPerformed
+        String cod_aluno = Text_cod.getText();
         System.out.println(cod_aluno);
-        String senha = Senha_Aluno_JTexField.getText();
-        String nome = Nome_Aluno_JTexField.getText();
+        String senha = Text_senha.getText();
+        String nome = Text_nome.getText();
         int num_faltas = 0;
-        String atestado = Atestado_Aluno_JTexField.getText();
-        String fixa_med = Fixa_Med_Aluno_JTexField.getText();
+        String atestado = Text_atestado.getText();
+        String fixa_med = Text_ficha.getText();
         
         Cadastro cadastro_aluno = new Cadastro();
         try {
@@ -179,15 +234,33 @@ public class Cadastro_interface extends javax.swing.JFrame {
                     atestado,
                     fixa_med
             );
-            JOptionPane.showMessageDialog(rootPane,"OK");
+            JOptionPane.showMessageDialog(this,"Cadastro efetuado com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, "o Cadastro deu errado!!");
+            JOptionPane.showMessageDialog(this, "O cadastro deu errado!!",
+                    "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Os campos de texto login e senha só podem"
+                    + " ser preenchidos com números.", "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+        }catch(IndexOutOfBoundsException ex){
+            JOptionPane.showMessageDialog(this, "Verifique se todos os campos de texto "
+                    + "estão preenchidos.", "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_Btn_CadastarActionPerformed
+        
+    }//GEN-LAST:event_Btn_okActionPerformed
 
-    private void Cod_Aluno_JTexFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cod_Aluno_JTexFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Cod_Aluno_JTexFieldActionPerformed
+    private void Btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_voltarActionPerformed
+        Login_aluno cancel = new Login_aluno();
+        cancel.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_Btn_voltarActionPerformed
+
+    private void Btn_limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_limparActionPerformed
+        Text_cod.setText(null);
+        Text_nome.setText(null);
+        Text_senha.setText(null);
+        Text_atestado.setText(null);
+        Text_ficha.setText(null);
+    }//GEN-LAST:event_Btn_limparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,37 +279,39 @@ public class Cadastro_interface extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cadastro_aluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cadastro_aluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cadastro_aluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cadastro_interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cadastro_aluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cadastro_interface().setVisible(true);
+                new Cadastro_aluno().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Atestado_Aluno_JTexField;
-    private javax.swing.JLabel Atestado_Aluno_Label;
-    private javax.swing.JButton Btn_Cadastar;
-    private javax.swing.JTextField Cod_Aluno_JTexField;
-    private javax.swing.JLabel Cod_aluno_Label;
-    private javax.swing.JTextField Fixa_Med_Aluno_JTexField;
-    private javax.swing.JLabel Fixa_Med_Label;
-    private javax.swing.JTextField Nome_Aluno_JTexField;
-    private javax.swing.JLabel Nome_Aluno_Label;
-    private javax.swing.JTextField Senha_Aluno_JTexField;
-    private javax.swing.JLabel Senha_Aluno_Label;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton Btn_limpar;
+    private javax.swing.JButton Btn_ok;
+    private javax.swing.JButton Btn_voltar;
+    private javax.swing.JLabel Lbl_atestado;
+    private javax.swing.JLabel Lbl_cod;
+    private javax.swing.JLabel Lbl_ficha;
+    private javax.swing.JLabel Lbl_nome;
+    private javax.swing.JLabel Lbl_senha;
+    private javax.swing.JLabel Lbl_titulo;
+    private javax.swing.JTextField Text_atestado;
+    private javax.swing.JTextField Text_cod;
+    private javax.swing.JTextField Text_ficha;
+    private javax.swing.JTextField Text_nome;
+    private javax.swing.JTextField Text_senha;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -35,10 +35,10 @@ public class Remover {
         comand_prepar.setString(1,Integer.toString(cod_coordenador));
         comand_prepar.execute();
     }
-    public void Remover_Turma(int cod_turma) throws SQLException{
+   /* public void Remover_Turma(int cod_turma) throws SQLException{
         PreparedStatement comand_prepar = con.prepareStatement("DELETE FROM turma WHERE cod_turma = ?;");
         comand_prepar.setString(1, Integer.toString(cod_turma));
         comand_prepar.execute();
     
-    }
+    }*/
 }

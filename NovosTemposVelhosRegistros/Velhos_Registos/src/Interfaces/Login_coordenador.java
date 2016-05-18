@@ -5,6 +5,15 @@
  */
 package Interfaces;
 
+import Objetos_Conexao.Login;
+import Objetos_Entidades.Aluno;
+import Objetos_Entidades.Coordenador;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author denise
@@ -31,11 +40,11 @@ public class Login_coordenador extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Lbl_login = new javax.swing.JLabel();
         Lbl_senha = new javax.swing.JLabel();
-        Btn_cancel = new javax.swing.JButton();
-        Btn_confirmar = new javax.swing.JButton();
+        Btn_entrar = new javax.swing.JButton();
         Btn_cadastrar = new javax.swing.JButton();
         Text_login = new javax.swing.JTextField();
         Text_senha = new javax.swing.JTextField();
+        Btn_voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login Coordenador");
@@ -51,22 +60,16 @@ public class Login_coordenador extends javax.swing.JFrame {
         Lbl_senha.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Lbl_senha.setText("Senha:");
 
-        Btn_cancel.setBackground(new java.awt.Color(221, 226, 242));
-        Btn_cancel.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
-        Btn_cancel.setText("Cancelar");
-        Btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Btn_cancel.setPreferredSize(new java.awt.Dimension(100, 37));
-        Btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+        Btn_entrar.setBackground(new java.awt.Color(221, 226, 242));
+        Btn_entrar.setFont(new java.awt.Font("Sawasdee", 0, 16)); // NOI18N
+        Btn_entrar.setText("Entrar");
+        Btn_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_entrar.setPreferredSize(new java.awt.Dimension(100, 37));
+        Btn_entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_cancelActionPerformed(evt);
+                Btn_entrarActionPerformed(evt);
             }
         });
-
-        Btn_confirmar.setBackground(new java.awt.Color(221, 226, 242));
-        Btn_confirmar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
-        Btn_confirmar.setText("Confirmar");
-        Btn_confirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Btn_confirmar.setPreferredSize(new java.awt.Dimension(100, 37));
 
         Btn_cadastrar.setBackground(new java.awt.Color(221, 226, 242));
         Btn_cadastrar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
@@ -83,6 +86,17 @@ public class Login_coordenador extends javax.swing.JFrame {
 
         Text_senha.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
+        Btn_voltar.setBackground(new java.awt.Color(221, 226, 242));
+        Btn_voltar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Btn_voltar.setText("Voltar");
+        Btn_voltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_voltar.setPreferredSize(new java.awt.Dimension(100, 35));
+        Btn_voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_voltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -90,30 +104,30 @@ public class Login_coordenador extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(Btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(Btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Lbl_senha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Lbl_senha, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                             .addComponent(Lbl_login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Text_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(9, 9, 9)
+                                .addComponent(Text_login, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(Text_login, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(Btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(8, 8, 8)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Text_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Btn_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Lbl_login)
                     .addComponent(Text_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -121,12 +135,13 @@ public class Login_coordenador extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Lbl_senha)
                     .addComponent(Text_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(Btn_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,7 +149,7 @@ public class Login_coordenador extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(87, Short.MAX_VALUE)
+                .addContainerGap(93, Short.MAX_VALUE)
                 .addComponent(Lbl_titulo)
                 .addGap(78, 78, 78))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -146,21 +161,47 @@ public class Login_coordenador extends javax.swing.JFrame {
                 .addComponent(Lbl_titulo)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_cancelActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_Btn_cancelActionPerformed
 
     private void Btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_cadastrarActionPerformed
         Cadastro_coordenador cadastra = new Cadastro_coordenador();
         cadastra.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_Btn_cadastrarActionPerformed
+
+    private void Btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_voltarActionPerformed
+        TelaEscolhaLogin cancel =  new TelaEscolhaLogin();
+        cancel.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_Btn_voltarActionPerformed
+    private void Btn_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_entrarActionPerformed
+        String login = Text_login.getText();
+        String senha = Text_senha.getText();     
+        ArrayList<Coordenador> lista = new ArrayList();
+        Login login_coord = new Login();
+        
+        try {
+            lista = login_coord.loginCoordenadores(login,senha);
+            if(lista.size() == 1){
+            pg_inicial_coordenador ok = new pg_inicial_coordenador();
+            ok.ReceberDados(lista.get(0).getCod_coordenador(),lista.get(0).getSenha_coord());
+            ok.setVisible(true);          
+            
+            this.setVisible(false);
+            }else{
+                JOptionPane.showMessageDialog(this,"tá errado fofa, sua ordinária 2");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "login efetuado com sucesso!");
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Preencha os campos de texto");
+        }
+    }//GEN-LAST:event_Btn_entrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,8 +240,8 @@ public class Login_coordenador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_cadastrar;
-    private javax.swing.JButton Btn_cancel;
-    private javax.swing.JButton Btn_confirmar;
+    private javax.swing.JButton Btn_entrar;
+    private javax.swing.JButton Btn_voltar;
     private javax.swing.JLabel Lbl_login;
     private javax.swing.JLabel Lbl_senha;
     private javax.swing.JLabel Lbl_titulo;

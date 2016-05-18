@@ -5,6 +5,11 @@
  */
 package Interfaces;
 
+import Objetos_Conexao.Login;
+import Objetos_Entidades.Coordenador;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  *
  * @author denise
@@ -36,7 +41,9 @@ public class pg_inicial_coordenador extends javax.swing.JFrame {
         Lbl_valor_cod = new javax.swing.JLabel();
         Lbl_nome = new javax.swing.JLabel();
         Lbl_valor_nome = new javax.swing.JLabel();
-        Btn_alter_turma = new javax.swing.JButton();
+        Btn_rmProf = new javax.swing.JButton();
+        Btn_faltas = new javax.swing.JButton();
+        Btn_rmAluno = new javax.swing.JButton();
         Lbl_titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,22 +51,22 @@ public class pg_inicial_coordenador extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(236, 236, 236));
 
-        Btn_alterar.setBackground(new java.awt.Color(236, 236, 236));
+        Btn_alterar.setBackground(new java.awt.Color(221, 226, 242));
         Btn_alterar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Btn_alterar.setText("Alterar dados");
         Btn_alterar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Btn_alterar.setPreferredSize(new java.awt.Dimension(130, 37));
+        Btn_alterar.setPreferredSize(new java.awt.Dimension(130, 35));
         Btn_alterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_alterarActionPerformed(evt);
             }
         });
 
-        Btn_sair.setBackground(new java.awt.Color(236, 236, 236));
+        Btn_sair.setBackground(new java.awt.Color(221, 226, 242));
         Btn_sair.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Btn_sair.setText("Sair");
         Btn_sair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Btn_sair.setPreferredSize(new java.awt.Dimension(130, 37));
+        Btn_sair.setPreferredSize(new java.awt.Dimension(130, 35));
         Btn_sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_sairActionPerformed(evt);
@@ -85,17 +92,36 @@ public class pg_inicial_coordenador extends javax.swing.JFrame {
         Lbl_valor_nome.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         Lbl_valor_nome.setPreferredSize(new java.awt.Dimension(163, 27));
 
-        Btn_alter_turma.setBackground(new java.awt.Color(236, 236, 236));
-        Btn_alter_turma.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
-        Btn_alter_turma.setText("Alterar dados da turma");
-        Btn_alter_turma.setActionCommand("Alterar dados da turma");
-        Btn_alter_turma.setAlignmentY(0.0F);
-        Btn_alter_turma.setMaximumSize(new java.awt.Dimension(167, 30));
-        Btn_alter_turma.setMinimumSize(new java.awt.Dimension(167, 30));
-        Btn_alter_turma.setPreferredSize(new java.awt.Dimension(130, 37));
-        Btn_alter_turma.addActionListener(new java.awt.event.ActionListener() {
+        Btn_rmProf.setBackground(new java.awt.Color(221, 226, 242));
+        Btn_rmProf.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Btn_rmProf.setText("Remover professor");
+        Btn_rmProf.setToolTipText("");
+        Btn_rmProf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_rmProf.setPreferredSize(new java.awt.Dimension(130, 35));
+        Btn_rmProf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_alter_turmaActionPerformed(evt);
+                Btn_rmProfActionPerformed(evt);
+            }
+        });
+
+        Btn_faltas.setBackground(new java.awt.Color(221, 226, 242));
+        Btn_faltas.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Btn_faltas.setText("Atribuir faltas");
+        Btn_faltas.setToolTipText("");
+        Btn_faltas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_faltas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_faltasActionPerformed(evt);
+            }
+        });
+
+        Btn_rmAluno.setBackground(new java.awt.Color(221, 226, 242));
+        Btn_rmAluno.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Btn_rmAluno.setText("Remover aluno");
+        Btn_rmAluno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_rmAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_rmAlunoActionPerformed(evt);
             }
         });
 
@@ -105,9 +131,13 @@ public class pg_inicial_coordenador extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(Btn_alter_turma, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                .addGap(50, 50, 50)
-                .addComponent(Btn_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Btn_rmProf, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(Btn_rmAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Btn_faltas, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(Btn_alterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(42, 42, 42))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,13 +149,13 @@ public class pg_inicial_coordenador extends javax.swing.JFrame {
                             .addComponent(Lbl_nome))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Lbl_valor_turma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Lbl_valor_nome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Lbl_valor_cod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(Lbl_valor_nome, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                            .addComponent(Lbl_valor_cod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Lbl_valor_turma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(Btn_sair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(131, 131, 131)
+                        .addComponent(Btn_sair, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,15 +170,19 @@ public class pg_inicial_coordenador extends javax.swing.JFrame {
                     .addComponent(Lbl_valor_cod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Lbl_turma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Lbl_turma)
                     .addComponent(Lbl_valor_turma, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Btn_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Btn_alter_turma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(Btn_rmAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Btn_rmProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Btn_faltas))
+                .addGap(18, 18, 18)
                 .addComponent(Btn_sair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(15, 15, 15))
         );
 
         Lbl_titulo.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -160,7 +194,7 @@ public class pg_inicial_coordenador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addGap(90, 90, 90)
                 .addComponent(Lbl_titulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -171,14 +205,16 @@ public class pg_inicial_coordenador extends javax.swing.JFrame {
                 .addComponent(Lbl_titulo)
                 .addGap(24, 24, 24)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_alterarActionPerformed
-        // TODO add your handling code here:
+        Atualizar_coordenador atualiza = new Atualizar_coordenador();
+        atualiza.setVisible(true);
+       // this.setVisible(false);
     }//GEN-LAST:event_Btn_alterarActionPerformed
 
     private void Btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_sairActionPerformed
@@ -187,13 +223,30 @@ public class pg_inicial_coordenador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_Btn_sairActionPerformed
 
-    private void Btn_alter_turmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_alter_turmaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Btn_alter_turmaActionPerformed
+    private void Btn_rmProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_rmProfActionPerformed
+        RemoverProf rmProf = new RemoverProf();
+        rmProf.setVisible(true);
+    }//GEN-LAST:event_Btn_rmProfActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void Btn_faltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_faltasActionPerformed
+        FazerFrequencia f = new FazerFrequencia();
+        f.setVisible(true);
+    }//GEN-LAST:event_Btn_faltasActionPerformed
+
+    private void Btn_rmAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_rmAlunoActionPerformed
+        RemoverAluno rmAluno = new RemoverAluno();
+        rmAluno.setVisible(true);
+    }//GEN-LAST:event_Btn_rmAlunoActionPerformed
+
+    public ArrayList<Coordenador> ReceberDados(int login, int senha)throws SQLException{
+      ArrayList<Coordenador> lista = new ArrayList();
+      Login novo = new Login();
+      lista = novo.loginCoordenadores(Integer.toString(login), Integer.toString(senha));
+      Lbl_valor_cod.setText(Integer.toString(lista.get(0).getCod_coordenador()));
+      Lbl_valor_nome.setText(lista.get(0).getNome());
+      Lbl_valor_turma.setText(Integer.toString(lista.get(0).getCod_turma()));
+      return lista;
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -227,8 +280,10 @@ public class pg_inicial_coordenador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Btn_alter_turma;
     private javax.swing.JButton Btn_alterar;
+    private javax.swing.JButton Btn_faltas;
+    private javax.swing.JButton Btn_rmAluno;
+    private javax.swing.JButton Btn_rmProf;
     private javax.swing.JButton Btn_sair;
     private javax.swing.JLabel Lbl_cod;
     private javax.swing.JLabel Lbl_nome;

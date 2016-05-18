@@ -60,19 +60,19 @@ public class Cadastro {
         comand_prepar.execute();
         con.close();
     }
-    public void Cadastrar_Coordenador(String nome, int cod_coordenador, int turma, int senha_coord) throws SQLException{
+    public void Cadastrar_Coordenador(String nome,int senha_coord, int cod_coordenador, int turma) throws SQLException{
         Coordenador coord = new Coordenador(
                 nome,
+                senha_coord,
                 cod_coordenador,
-                turma,
-                senha_coord
+                turma
         );
         
         PreparedStatement comand_prepar = con.prepareStatement("INSERT INTO coordenador VALUES(?,?,?,?);");
         comand_prepar.setString(1,coord.getNome());
-        comand_prepar.setString(2,Integer.toString(coord.getCod_coordenador()));
-        comand_prepar.setString(3,Integer.toString(coord.getCod_turma()));
-        comand_prepar.setString(4,Integer.toString(coord.getSenha_coord()));
+        comand_prepar.setString(2,Integer.toString(coord.getSenha_coord()));
+        comand_prepar.setString(3,Integer.toString(coord.getCod_coordenador()));
+        comand_prepar.setString(4,Integer.toString(coord.getCod_turma()));
         comand_prepar.execute();
         con.close();
     

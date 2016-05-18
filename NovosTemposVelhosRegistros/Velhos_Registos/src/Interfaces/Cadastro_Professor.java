@@ -5,6 +5,14 @@
  */
 package Interfaces;
 
+import Objetos_Conexao.Cadastro;
+import Objetos_Entidades.Professor;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author denise
@@ -39,14 +47,15 @@ public class Cadastro_Professor extends javax.swing.JFrame {
         Lbl_nome = new javax.swing.JLabel();
         Lbl_atividade = new javax.swing.JLabel();
         Lbl_ch = new javax.swing.JLabel();
-        Btn_cancel = new javax.swing.JButton();
+        Btn_limpar = new javax.swing.JButton();
         Btn_confirmar = new javax.swing.JButton();
+        Btn_voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastrar Professor");
+        setTitle("Cadastrar professor");
 
         Lbl_titulo.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        Lbl_titulo.setText("Cadastar novo professor");
+        Lbl_titulo.setText("Cadastar professor");
 
         jPanel1.setBackground(new java.awt.Color(236, 236, 236));
 
@@ -81,25 +90,36 @@ public class Cadastro_Professor extends javax.swing.JFrame {
         Lbl_ch.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Lbl_ch.setText("Carga Horária:");
 
-        Btn_cancel.setBackground(new java.awt.Color(221, 226, 242));
-        Btn_cancel.setFont(new java.awt.Font("Umpush", 1, 16)); // NOI18N
-        Btn_cancel.setText("Cancelar");
-        Btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Btn_cancel.setPreferredSize(new java.awt.Dimension(115, 35));
-        Btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+        Btn_limpar.setBackground(new java.awt.Color(221, 226, 242));
+        Btn_limpar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Btn_limpar.setText("Limpar");
+        Btn_limpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_limpar.setPreferredSize(new java.awt.Dimension(100, 35));
+        Btn_limpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_cancelActionPerformed(evt);
+                Btn_limparActionPerformed(evt);
             }
         });
 
         Btn_confirmar.setBackground(new java.awt.Color(221, 226, 242));
-        Btn_confirmar.setFont(new java.awt.Font("Umpush", 1, 16)); // NOI18N
+        Btn_confirmar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Btn_confirmar.setText("Cadastrar");
         Btn_confirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Btn_confirmar.setPreferredSize(new java.awt.Dimension(115, 35));
+        Btn_confirmar.setPreferredSize(new java.awt.Dimension(100, 35));
         Btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_confirmarActionPerformed(evt);
+            }
+        });
+
+        Btn_voltar.setBackground(new java.awt.Color(221, 226, 242));
+        Btn_voltar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Btn_voltar.setText("Voltar");
+        Btn_voltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_voltar.setPreferredSize(new java.awt.Dimension(100, 35));
+        Btn_voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_voltarActionPerformed(evt);
             }
         });
 
@@ -108,14 +128,15 @@ public class Cadastro_Professor extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(65, 65, 65)
+                .addComponent(Btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(Btn_limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(Btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(Btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Lbl_id)
                             .addComponent(Lbl_senha)
@@ -128,8 +149,11 @@ public class Cadastro_Professor extends javax.swing.JFrame {
                             .addComponent(Text_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Text_nome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Text_atividade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Text_ch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                            .addComponent(Text_ch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(Btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,12 +164,12 @@ public class Cadastro_Professor extends javax.swing.JFrame {
                     .addComponent(Text_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Lbl_senha)
-                    .addComponent(Text_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Text_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Lbl_nome))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lbl_senha)
+                    .addComponent(Text_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Text_atividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,11 +178,13 @@ public class Cadastro_Professor extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Text_ch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Lbl_ch))
-                .addGap(27, 27, 27)
+                .addGap(30, 30, 30)
+                .addComponent(Btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(Btn_limpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,32 +193,60 @@ public class Cadastro_Professor extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
+                .addGap(118, 118, 118)
                 .addComponent(Lbl_titulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addComponent(Lbl_titulo)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_confirmarActionPerformed
-        // TODO add your handling code here:
+        String cod = Text_id.getText();
+        String senha = Text_senha.getText();
+        String nome = Text_nome.getText();
+        String atividade = Text_atividade.getText();
+        String ch = Text_ch.getText();
+        
+        Cadastro cadastrar = new Cadastro();
+        try {
+            cadastrar.Cadastrar_Prof(
+                    Integer.parseInt(cod),
+                    Integer.parseInt(senha),
+                    nome,
+                    atividade,
+                    Integer.parseInt(ch)
+            );
+            JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso!", 
+                    "deu certo", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar professor.",
+                    "Tente novamente",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_Btn_confirmarActionPerformed
 
-    private void Btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_cancelActionPerformed
+    private void Btn_limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_limparActionPerformed
+        Text_id.setText(null);
+        Text_nome.setText(null);
+        Text_ch.setText(null);
+        Text_atividade.setText(null);
+        Text_senha.setText(null);
+    }//GEN-LAST:event_Btn_limparActionPerformed
+
+    private void Btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_voltarActionPerformed
         Login_professor login = new Login_professor();
         login.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_Btn_cancelActionPerformed
+    }//GEN-LAST:event_Btn_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,8 +284,9 @@ public class Cadastro_Professor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Btn_cancel;
     private javax.swing.JButton Btn_confirmar;
+    private javax.swing.JButton Btn_limpar;
+    private javax.swing.JButton Btn_voltar;
     private javax.swing.JLabel Lbl_atividade;
     private javax.swing.JLabel Lbl_ch;
     private javax.swing.JLabel Lbl_id;

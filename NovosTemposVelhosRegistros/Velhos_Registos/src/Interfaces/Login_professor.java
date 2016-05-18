@@ -5,6 +5,14 @@
  */
 package Interfaces;
 
+import Objetos_Conexao.Login;
+import Objetos_Entidades.Professor;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author denise
@@ -32,12 +40,14 @@ public class Login_professor extends javax.swing.JFrame {
         Lbl_senha = new javax.swing.JLabel();
         Text_login = new javax.swing.JTextField();
         Text_senha = new javax.swing.JTextField();
-        Btn_cancel = new javax.swing.JButton();
-        Btn_confirmar = new javax.swing.JButton();
+        Btn_entrar = new javax.swing.JButton();
         Btn_cadastrar = new javax.swing.JButton();
+        Btn_voltar = new javax.swing.JButton();
         Lbl_titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login professor");
+        setPreferredSize(new java.awt.Dimension(390, 379));
 
         jPanel1.setBackground(new java.awt.Color(236, 236, 236));
 
@@ -51,32 +61,38 @@ public class Login_professor extends javax.swing.JFrame {
 
         Text_senha.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        Btn_cancel.setBackground(new java.awt.Color(236, 236, 236));
-        Btn_cancel.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
-        Btn_cancel.setText("Cancelar");
-        Btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Btn_cancel.setPreferredSize(new java.awt.Dimension(110, 35));
-        Btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+        Btn_entrar.setBackground(new java.awt.Color(236, 236, 236));
+        Btn_entrar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Btn_entrar.setText("Entrar");
+        Btn_entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_entrar.setPreferredSize(new java.awt.Dimension(100, 35));
+        Btn_entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_cancelActionPerformed(evt);
+                Btn_entrarActionPerformed(evt);
             }
         });
-
-        Btn_confirmar.setBackground(new java.awt.Color(236, 236, 236));
-        Btn_confirmar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
-        Btn_confirmar.setText("Confirmar");
-        Btn_confirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Btn_confirmar.setPreferredSize(new java.awt.Dimension(110, 35));
 
         Btn_cadastrar.setBackground(new java.awt.Color(236, 236, 236));
         Btn_cadastrar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
         Btn_cadastrar.setText("Cadastrar");
         Btn_cadastrar.setToolTipText("Cadastrar novo professor");
         Btn_cadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Btn_cadastrar.setPreferredSize(new java.awt.Dimension(110, 35));
+        Btn_cadastrar.setPreferredSize(new java.awt.Dimension(100, 35));
         Btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_cadastrarActionPerformed(evt);
+            }
+        });
+
+        Btn_voltar.setBackground(new java.awt.Color(236, 236, 236));
+        Btn_voltar.setFont(new java.awt.Font("Sawasdee", 0, 15)); // NOI18N
+        Btn_voltar.setText("Voltar");
+        Btn_voltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_voltar.setMaximumSize(new java.awt.Dimension(78, 37));
+        Btn_voltar.setPreferredSize(new java.awt.Dimension(100, 35));
+        Btn_voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_voltarActionPerformed(evt);
             }
         });
 
@@ -87,40 +103,43 @@ public class Login_professor extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
+                        .addGap(70, 70, 70)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Lbl_login)
                             .addComponent(Lbl_senha))
-                        .addGap(20, 20, 20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Text_login, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                            .addComponent(Text_senha)))
+                            .addComponent(Text_senha, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                            .addComponent(Text_login)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(126, 126, 126)
+                        .addComponent(Btn_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(79, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(Btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Lbl_login)
                     .addComponent(Text_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Lbl_senha)
                     .addComponent(Text_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(35, 35, 35)
+                .addComponent(Btn_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Btn_confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         Lbl_titulo.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -130,34 +149,67 @@ public class Login_professor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(102, 102, 102)
                 .addComponent(Lbl_titulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(23, 23, 23)
                 .addComponent(Lbl_titulo)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_cancelActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_Btn_cancelActionPerformed
 
     private void Btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_cadastrarActionPerformed
         Cadastro_Professor prof = new Cadastro_Professor();
         prof.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_Btn_cadastrarActionPerformed
+    
+    pg_inicial_professor pg_prof;
+    
+    private void Btn_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_entrarActionPerformed
+        String login = Text_login.getText();
+        String senha = Text_senha.getText();
+        
+        ArrayList<Professor> prof = new ArrayList();
+        Login listar = new Login();
+        
+        try {
+            prof = listar.loginProfessores(login, senha);
+            
+            int cod = prof.get(0).getCod_prof();
+            String nome = prof.get(0).getNome();
+            String atividade= prof.get(0).getAtiv_ministrada();
+            int ch = prof.get(0).getCarga_horaria();
+            
+            pg_prof = new pg_inicial_professor();
+            pg_prof.setVisible(true);
+            pg_prof.ReceberDados(cod, nome, atividade, ch);
+            
+            this.dispose();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Login_professor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch(IndexOutOfBoundsException ex){
+            JOptionPane.showMessageDialog(this, "Login e/ou senha incorretos", "Erro no login", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_Btn_entrarActionPerformed
+
+    private void Btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_voltarActionPerformed
+        TelaEscolhaLogin cancel =  new TelaEscolhaLogin();
+        cancel.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_Btn_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,8 +249,8 @@ public class Login_professor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_cadastrar;
-    private javax.swing.JButton Btn_cancel;
-    private javax.swing.JButton Btn_confirmar;
+    private javax.swing.JButton Btn_entrar;
+    private javax.swing.JButton Btn_voltar;
     private javax.swing.JLabel Lbl_login;
     private javax.swing.JLabel Lbl_senha;
     private javax.swing.JLabel Lbl_titulo;

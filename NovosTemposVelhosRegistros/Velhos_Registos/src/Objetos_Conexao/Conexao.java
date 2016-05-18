@@ -1,9 +1,8 @@
-package velhos_registos;
+package Objetos_Conexao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 
 public class Conexao {
